@@ -30,45 +30,7 @@
 
 | 항목 | 내용 |
 |:---|---|
-| (1) 요구사항 정의 | **[유스케이스]** <br> ![유스케이스](https://github.com/user-attachments/assets/f6acff08-095e-4f47-b237-6f22975b539b) <br><br> **[클래스 다이어그램]** <br> ![plantUML2](https://github.com/user-attachments/assets/b66e09c0-1570-41eb-a0cc-52feb0ef5b4a) |
-
-<br>
-
-~~**1. STTManager**  
-- 역할: 마이크 입력을 녹음하고 FLAC으로 변환 후, Google STT API를 통해 텍스트로 인식. 인식된 텍스트를 이벤트로 전달함.
-
-**2. ChatGPTManager**  
-- 역할: 인식된 텍스트를 OpenAI GPT API로 전송하고, GPT 응답을 받아 콜백으로 반환함.
-
-**3. TTSManager**  
-- 역할: 텍스트를 Google TTS API에 전송하여 음성(MP3)으로 변환하고 Unity에서 재생함.
-
-**4. WavUtility**  
-- 역할: AudioClip 데이터를 PCM 형식의 WAV 바이너리로 변환 (STT용 중간 포맷 생성)
-
-**5. GameManager**  
-- 역할: 게임 상태를 전체적으로 관리 - 씬 전환, 시작 및 종료 처리
-
-**6. RoomManager**  
-- 역할: Photon을 통해 방 생성, 입장, 플레이어 연결
-
-**7. Player**  
-- 역할: 플레이어 캐릭터 상태 관리 및 조작
-
-**8. Inventory**  
-- 역할: 아이템 보관/추가/삭제
-
-**9. Item**  
-- 역할: 아이템 정보 – 종류, 사용 여부 등
-
-**10. Monster**  
-- 역할: 플레이어 유인, 추격 및 공격
-
-**11. VoiceManager**  
-- 역할: Azure 통신을 통해 음성 → 텍스트 → 대사 → 음성 흐름 처리
-
-**12. InteractionObject**  
-- 역할: 문, 서랍 등 열 수 있는 오브젝트 정보 – 열림/닫힘 상태, 사용자 상호작용 등~~
+| (1) 요구사항 정의 | **[유스케이스]** <br> ![유스케이스](https://github.com/user-attachments/assets/f6acff08-095e-4f47-b237-6f22975b539b) <br><br> **[클래스 다이어그램]** <br> ![plantUML2](https://github.com/user-attachments/assets/b66e09c0-1570-41eb-a0cc-52feb0ef5b4a) <br><br> ~~**1. STTManager**<br>- 역할: 마이크 입력을 녹음하고 FLAC으로 변환 후, Google STT API를 통해 텍스트로 인식. 인식된 텍스트를 이벤트로 전달함.<br><br>**2. ChatGPTManager**<br>- 역할: 인식된 텍스트를 OpenAI GPT API로 전송하고, GPT 응답을 받아 콜백으로 반환함.<br><br>**3. TTSManager**<br>- 역할: 텍스트를 Google TTS API에 전송하여 음성(MP3)으로 변환하고 Unity에서 재생함.<br><br>**4. WavUtility**<br>- 역할: AudioClip 데이터를 PCM 형식의 WAV 바이너리로 변환 (STT용 중간 포맷 생성)<br><br>**5. GameManager**<br>- 역할: 게임 상태를 전체적으로 관리 - 씬 전환, 시작 및 종료 처리<br><br>**6. RoomManager**<br>- 역할: Photon을 통해 방 생성, 입장, 플레이어 연결<br><br>**7. Player**<br>- 역할: 플레이어 캐릭터 상태 관리 및 조작<br><br>**8. Inventory**<br>- 역할: 아이템 보관/추가/삭제<br><br>**9. Item**<br>- 역할: 아이템 정보 – 종류, 사용 여부 등<br><br>**10. Monster**<br>- 역할: 플레이어 유인, 추격 및 공격<br><br>**11. VoiceManager**<br>- 역할: Azure 통신을 통해 음성 → 텍스트 → 대사 → 음성 흐름 처리<br><br>**12. InteractionObject**<br>- 역할: 문, 서랍 등 열 수 있는 오브젝트 정보 – 열림/닫힘 상태, 사용자 상호작용 등~~ |
 
 | (2) 전체 시스템 구성 | ![전체 SW 시스템](https://github.com/user-attachments/assets/ad052133-1c0b-40e2-a608-9f1fb5919fe6)<br><br>전체 시스템은 Unity Client, Photon 서버, Azure 서버, 그리고 AI Voice Pipeline으로 구성되며 각각의 모듈 간의 유기적인 연결을 통해 게임 구현이 된다.<br>Unity Client는 사용자가 조작하는 게임 환경으로 Game Logic은 실시간 게임 플레이를 담당하고 Photon SDK를 통해 Photon 서버와 통신하여 멀티 플레이어 간의 위치나 상호작용 데이터 동기화, 그리고 음성 소통을 제공한다. 동시에 Unity Client의 사용자 인터페이스는 Azure SDK 또는 REST API를 통해 Azure 서버와 연결되어 STT-LLM-TTS 요청을 처리한다.<br>사용자가 게임 중 음성 입력을 하면 Unity는 이를 녹음하여 Azure 서버로 전송하고, Azure 서버는 이를 AI Voice Pipeline에 전달하여 STT로 텍스트를 추출한 뒤, 해당 텍스를 기반으로 프롬프팅된 LLM을 통해 몬스터의 응답을 생성하고, TTS 를 사용해 음성으로 변환한다. 이때 음성은 보이스클론을 통해 생성된 음성을 사용하고자 한다. 이 음성은 다시 Azure 서버를 거쳐 Unity Client 로 전달되어 몬스터가 플레이어의 음성으로 응답해 몰입감 있는 게임 상호작용이 완성된다. |
 | (3) 주요엔진 및 기능 설계 | **1. Unity Client** <br>사용자의 직접적인 조작이 이루어지는 게임 클라이언트로, 플레이어의 이동, 사물 및 아이템 상호작용, 인벤토리 시스템, 대화 입력 등의 실시간 게임 플레이 로직이 이곳에서 처리된다. 사용자 입력에 따라 발생하는 대부분의 게임 이벤트는 Unity 내부의 Game Logic에서 처리되며, 그 결과는 네트워크를 통해 상대방 플레이어에게 공유된다.  AI 음성 기능과도 연결되어 Azure 서버를 통해 데이터를 주고받는다. 플레이어가 Space 키를 누르고 대화할 경우, Unity는 마이크로부터 음성을 녹음하고, 이를 Azure로 전송해 일련의 과정을 거친 뒤, 최종적으로 음성을 받아 몬스터가 출력하도록 한다, 정리하면, Unity Client는 사용자 입력 처리와 외부 AI 모듈과 통신 허브 역할을 수행한다.<br><br>**2. Photon SDK & Photon server**<br>멀티플레이어 구현을 위해 Unity Client는 Photon SDK를 통해 Photon Server와 통신한다. Photon은 룸 생성 및 입장, 플레이어 상태 관리, 동기화 이벤트 처리 등 멀티 플레이어에 필요한 네트워크 기능을 지원한다. 두 명의 플레이어는 동일한 룸에 접속한 후, 위치 및 회전 정보가 실시간으로 동기화되며, 아이템 획득, 문/서랍 상호작용, 캐릭터 상태 등의 정보도 RPC(Remote Precedure Call)을 통해 서로 공유된다. 이를 통해 두 명의 플레이어는 같은 공간에 존재하는 것처럼 게임을 진행할 수 있다.<br><br>**3. Azure Server**<br> Unity client와 AI Voice Pipeline 사이의 중계 역할을 수행하며 음성 인식부터 응답 생성, 음성 합성까지의 요청 및 결과를 관리하다. 사용자의 음성 데이터는 Azure SDK 또는 REST API를 통해 서버로 전송되며, 서버는 이를 STT, LLM, TTS API에 순차적으로 전달하고 그 결과를 클라이언트(Unity) 로 반환한다. 보이스 클론 기능이 활성화가 된 경우에는 음성 샘플을 기반으로 고유한 음성 프로플도 생성하고 활용한다.<br><br>**4. AI Voice Pipeline**<br> AI Voice Pipeline은 사용자의 음성을 처리하여 텍스트를 생성하고, 이를 다시 음성으로 변환하는 세 단계의 AI 처리 흐름이다. STT API가 음성을 텍스트로 변환하고, LLM API 가 프롬프트 기반으로 응답 문장을 생성한 뒤 TTS API가 이를 음성으로 바꾼다. 이때, 보이스 클론된 샘플을 사용할 경우, 사용자의 목소리를 흉내 낸 몬스터의 응답 생성이 가능하다. |
