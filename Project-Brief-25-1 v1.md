@@ -22,7 +22,7 @@
 |18|[코드의정상화](#team-18)| Graphhopper와 Multi-Factor Route Optimization Algorithm을 이용한 러너 맞춤형 경로 추천 서비스
 |19|[JEY](#team-19)| Lightweight Part-Aware 3D Texture Editing Using 2D Stable Diffusion
 |20|[뜨개걸즈](#team-20)| 도안을 구하기 어려운 뜨개인들을 위해 Image Segmentation(DeepLab)을 활용하여 제품 이미지에서 뜨개질 패턴 추출 및 도안을 생성하고 커뮤니티 기능을 제공하는 서비스
-|21|[가능한](#team-21)| Generating Missing Auditory Modality via Semantic Mapping for Video Action Recognition
+|21|[가능한](#team-21)| VIDA: Vision-Informed Deep Audio Feature Generation for Action Recognition
 |22|[ZIP가기](#team-22)| 독립 출판물만의 감성을 즐기는 사용자를 위한 독립 출판물이 있는 서점 탐색부터, 리뷰 기반 추천까지, RAG를 기반으로 개인화된 독서 경험을 제공하는 서점ZIP
 |23|[클로버](#team-23)| 고객의 상황을 반영한 응대와 주문 결제 자동화를 제공하는 휴먼터치 AI 챗오더
 |24|[대장정](#team-24)| 시선추적, 제스처인식, STT 기반 AI 발표 트레이너, SPitching
@@ -351,14 +351,14 @@
 [Return TOP](#list-of-teamsprojects)
  
 # Team-21
-| (1) 과제명 |  Generating Missing Auditory Modality via Semantic Mapping for Video Action Recognition |
+| (1) 과제명 |  VIDA: Vision-Informed Deep Audio Feature Generation for Action Recognition |
 |:---  |---  |
 | (2) 팀 번호/이름 | 21-가능한 |
-| (3) 구성원 | 김지은(2140010): 리더, *기본 데이터 전처리, caption-based dictionary 활용 아키텍처 설계 및 구현, transformer 활용 오디오 특징 추출* <br> 윤서아(2168019): 팀원, *TSN 기반 feature extraction, BERT 활용 semantic mapping dictionary 설계* <br> 장은성(2271052) : 팀원, *transformer 기반 프레임워크 중 video 전처리, feature 추출 부분 설계 및 구현* |
+| (3) 구성원 | 김지은(2140010): 리더, 팀 리더, raw 데이터 전처리, 오디오 특징 추출, CAFMap 아키텍처 설계 및 구현 <br> 윤서아(2168019): 팀원, LSTM audio generator, SVDMap 아키텍처 설계 및 구현 <br> 장은성(2271052) : 팀원, 비디오 데이터 전처리 및 특징 추출 |
 | (4) 지도교수 | 이형준 교수 |
 | (5) 트랙  | 연구 |
 | (6) 과제 키워드 | Generative AI, Video Action Recognition, Multimodal, Semantic Mapping |
-| (7) 과제 내용 요약 | 본 연구는 비디오 시퀀스를 기반으로 오디오 피처를 재구성하여, 결손된 오디오 데이터를 보완하고 이를 통해 모델의 정확도를 향상시키는 것을 목표로 한다. 이를 위해 비디오와 오디오 간의 의미적 정렬을 수행하는 개념인 Semantic Mapping을 차용하였다. 두 가지 아키텍처를 제안하는데, 공통적으로 비디오로부터 오디오 피처를 생성하지만, 검증 및 활용 방식에서 차이를 보인다. 첫 번째 아키텍처는 CNN과 LSTM을 활용하여 오디오 피처를 생성한 후, Semantic Dictionary를 이용해 의미적 유효성을 검증한다. 이 검증을 통과한 피처만 학습에 활용하는 방식이다. 두 번째 아키텍처는 Transformer를 활용해 대표 프레임을 추출하고, 캡션으로 변환한 뒤 이를 키로 사용하는 Semantic Dictionary을 만든다. 이 사전을 참조하여 오디오 피쳐를 생성해낸다. 두 아키텍처를 비교 분석함으로써, 의미 기반 피처 정렬 방식이 오디오 생성 및 영상 이해 성능에 미치는 영향을 규명하고자 한다. |
+| (7) 과제 내용 요약 | **[문제 정의]** <br>시각 정보만으로 행동을 구별하는 데 한계가 존재하기에, 비디오-오디오 멀티모달 행동 인식에 주목하였다. 그러나 실제 환경에서는 오디오 모달리티가 누락되는 경우가 자주 발생하며, 이는 행동 인식 정확도의 저하로 이어진다. 따라서 본 연구는 비디오와 의미적으로 정합한 오디오 피처를 생성하여 이러한 문제를 해결하고자 한다.<br><br> **[Solution 1]** <br>SVDMap 아키텍처는 LSTM을 통해 생성된 오디오 피처가 의미적으로 적절한 경우에만 행동 분류 학습에 활용되도록 설계된 구조이다. 기존 연구는 생성된 오디오 피처와 GT 피처 간의 수치적 비교만을 학습 신호로 삼았지만, SVDMap은 여기에 의미적 정합성 판단 절차를 추가한다. 생성된 오디오 피처를 AST 모델에 입력하여 multi-label 오디오 라벨을 예측하고, GT 비디오 클래스에 대해 BERT를 통해 AudioSet 라벨들과 사전 매핑된 Semantic Validation Dictionary(SVD)에서 의미적 GT 오디오 라벨을 조회한다. 이후 예측된 오디오 라벨과 SVD에서 조회된 오디오 라벨 간의 IoU를 계산하며, 일정 threshold 이상일 경우에만 해당 오디오 피처를 retain한다. 이처럼 벡터 간 유사도와 의미적 정합성을 동시에 고려한 오디오 필터링 전략을 통해 멀티모달 행동 인식의 정확도를 향상시키는 것을 목표로 한다.<br><br> **[Solution 2]** <br>CAFMap 아키텍처는 비디오에서 의미 있는 시점을 포착해 오디오가 누락된 상황에서도 정합성 높은 오디오 피처를 생성하고, 이를 활용해 행동 인식 정확도를 향상시키는 것을 목표로 한다. 프레임 간 픽셀 이동량을 기준으로 대표 프레임을 선정하고, 해당 이미지에 대해 BLIP을 통해 캡션을 생성한다. 이후 캡션과 의미적으로 유사한 AudioSet의 오디오 라벨을 매핑하고, 각 라벨에 대응하는 오디오 피처를 조건 입력으로 활용한다. 전체 입력 시퀀스는 [18, 128] 형태이며, 대표 프레임 위치에는 조건 피처를, 나머지 위치에는 랜덤 노이즈를 삽입한 후 LSTM을 통해 시퀀스 형태의 오디오 피처를 생성한다. 생성된 피처는 최종적으로 행동 분류에 활용된다.<br><br> **[기대 효과]**<br> 1. 오디오 결손 상황에서도 행동 인식의 높은 정확도 유지 가능<br>2. 의미 기반 오디오 피처 생성 및 검증 메커니즘의 도입<br>3. 다양한 멀티모달 분야로의 확장 및 AGI(Artificial General Intelligence) 구현에 기여|
 | (8) 주요 Link | https://github.com/Capstone-TeamPossible |
  
 <br>
