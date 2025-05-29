@@ -7,7 +7,7 @@
 |03|[쌈뽕워리어즈](#team-03)| gpt-4o-mini와 Text-to-X 기술에 기반하여 숏폼 콘텐츠에 익숙한 현대인의 뉴스 및 정보 소비 문제를 해결하기 위한 자동화된 뉴스 요약 숏폼 생성 시스템
 |04|[217 더보기](#team-04)| 완강기 사용법을 배우고자 하는 현대인을 위한 몰입형 VR 교육 콘텐츠
 |05|[무한도전](#team-05)| AI 기반 화폐 인식과 위치 기반 매칭을 통해 집에 보관 중인 외화를 근처 사용자와 연결해주는 스마트 외화 직거래 서비스
-|06|[Goggle](#team-06)| LangChain 기반 AI 바둑 복기(復棋) 서비스 : 중급자 실력 향상을 위한 맞춤형 LLM해설 지원
+|06|[Goggle](#team-06)| Goggle: 바둑 중급자를 위한 AI 기반 바둑 해설 학습 서비스
 |07|[테스파](#team-07)| Back-Pack: Collaborative Knowledge Transfer with Diverse Backbone Selection Beyond Modality
 |08|[eiai](#team-08)| THANOS: Integrating HPO and NAS for Hardware-Aware Transformer Optimization under Memory Size Constraints
 |09|[Jppin](#team-09)| 임산부 대상 복약정보 연동·RAG 기반 개인맞춤형 영양보충 가이드 시스템
@@ -125,14 +125,14 @@
 [Return TOP](#list-of-teamsprojects)
  
 # Team-06
-| (1) 과제명 |  LangChain 기반 AI 바둑 복기(復棋) 서비스: <br> 중급자 실력 향상을 위한 맞춤형 LLM해설 지원 |
+| (1) 과제명 | 바둑 중급자를 위한 AI 기반 바둑 해설 학습 서비스: 중급자 맞춤형 LLM 해설 지원 |
 |:---  |---  |
 | (2) 팀 번호/이름 | 06-Goggle |
-| (3) 구성원 | 한사랑(2271064): 리더, PM, AI <br> 김희서(2276093): 팀원, Back-end <br> 임가현(1948072): 팀원, Front-end |
+| (3) 구성원 | 한사랑(2271064): 리더, AI, Back-end <br> 임가현(1948072): 팀원, Front-end <br> 김희서(2276093): 팀원 <br> |
 | (4) 지도교수 | 심재형 교수 |
 | (5) 트랙  | 산학 |
-| (6) 과제 키워드 | 바둑, LangChain, LAG, LLM |
-| (7) 과제 내용 요약 | AI를 통한 **쉬운 바둑 복기** 서비스 구축하기: <br><br> 바둑 AI엔진 **KataGo**, **LLM(GPT)**, **SGF-Analyze** 오픈소스를 통합하여, 사용자가 업로드한 SGF 포맷의 바둑 기보를 분석 및 자동으로 해설을 생성하고 복기를 지원하는 시스템을 구축하는 것이 주요 과제입니다. |
+| (6) 과제 키워드 | 바둑, AI, KataGo, GPT, Langchain, LLM |
+| (7) 과제 내용 요약 | [소개] <br> Goggle은 바둑 중급자를 위한 AI기반 맞춤형 바둑 학습 서비스를 제공합니다. <br> 사용자가 업로드한 SGF 형태의 **바둑 기보**를 인식하고, <br> AI 분석과 자연어로 된 해설을 통해 중급 아마추어 사용자에게 실질적으로 성장할 수 있는 도구를 제공합니다. <br><br> [주요 기능] <br> 1. **기보 분석**: KataGo 기반 AI 분석으로 주요 수의 승률 변화 및 추천 수 계산 <br> 2. **AI 해설 생성**: GPT 기반 자연어 해설을 통해 주요 장면에 대한 설명 제공 <br> 3. **기보 아카이빙 및 편집**: SGF 파일을 업로드·저장·편집하고, 학습용으로 관리 가능 <br><br> [기대효과]<br> - 디지털 복기 흐름 구축: 기존 아날로그 복기의 한계를 보완하며 빠르고 직관적인 디지털 복기 환경을 새롭게 구축 <br> - 기보 이해력 향상: 단순한 수순 복기에서 벗어나, 다양한 복기 도구를 통해 수의 의미와 맥락을 깊이 있게 학습 |
 | (8) 주요 Link | [팀 저장소 링크](https://github.com/orgs/Team-Goggle/repositories) |
  
 <br>
