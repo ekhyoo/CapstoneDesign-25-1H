@@ -162,8 +162,8 @@
 | (4) 지도교수 | 심재형 교수 |
 | (5) 트랙  | 연구 |
 | (6) 과제 키워드 | Hardware aware NAS, HPO, Efficient Transformer |
-| (7) 과제 내용 요약 | &nbsp; Transformer 모델은 NLP 분야에서 널리 사용되고 있지만, 모델의 크기와 연산량이 증가하면서 높은 컴퓨팅 자원을 요구하게 되었다. 특히 엣지 디바이스와 같은 제한된 환경에서는 모델의 추론에서의 지연과 메모리 사용에서의 제약과 같은 문제가 발생한다. 이러한 문제를 해결하기 위해, 하드웨어 제약을 고려한 경량화 모델 탐색이 필요하다. 본 논문은 NAS(Neural Architecture Search)와 HPO(Hyperparameter Optimization)를 결합한 기법을 통해 이를 해결하고자 한다. 즉, NAS를 통해 구조를 탐색하고, HPO를 통해 성능과 제약 조건 모두를 고려하는 최적의 모델을 찾는다. 특히 NAS의 거대한 서치 스페이스가 초래하는 서치 연산 문제와 메모리 제약조건에 대한 비인지성 문제를 HPO로 보완한다. 이를 통해 주어진 하드웨어에 최적화된 효율적인 트랜스포머 모델을 설계할 수 있다.  |
-| (8) 주요 Link | [ei-ai github organization](https://github.com/ei-ai) |
+| (7) 과제 내용 요약 | 최근 온 디바이스 인공지능에 대한 수요가 증가함에 따라, 제한된 하드웨어 환경에서도 자연어 처리 모델이 효율적으로 작동할 수 있도록 설계하는 것이 중요해지고 있다. 이를 해결하기 위한 접근법으로 NAS(Network Architecture Search)가 주로 활용되어 왔으며, 이는 신경망 구조를 자동으로 설계하여 특정 목적에 최적화된 모델 아키텍처를 효율적으로 탐색할 수 있게 한다. 또한, HPO(Hyperparameter Optimization)를 이용하면, NAS만으로는 반영하기 어려운 하드웨어 제약을 보완하고 조정함으로써, 실제 환경에 더 적합한 모델 구현을 가능하게 한다. <br> 그러나, NPU와 같은 특수 하드웨어가 엣지 AI의 활용을 확장하고 있음에도, NAS와 HPO를 통합하여 소프트웨어와 하드웨어 간 최적화를 동시에 달성하려는 연구는 아직 부족한 실정이다. <br> 이에 본 연구는 NAS와 HPO를 유기적으로 결합하고, NPU 기반 하드웨어 제약을 통합적으로 반영함으로써, 온 디바이스 환경에 최적화된 모델을 효과적으로 탐색하는 방식을 제안한다. |
+| (8) 주요 Link | [ei-ai github organization](https://github.com/ei-ai/THANOS) <br> [보고서](https://github.com/ei-ai/eiai/blob/main/Capstone-1stReport-08-eiaiv1-2025-03-22.md) |
  
 <br>
  
