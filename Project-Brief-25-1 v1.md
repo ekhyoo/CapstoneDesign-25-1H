@@ -20,7 +20,7 @@
 |16|[RexT](#team-16)| 위성인터넷 해킹을 통한 프라이버시 유출 방지를 위한 Fingerprinting 기법을 활용한 Starlink 네트워크 취약점 분석
 |17|[테크핑](#team-17)| EASY-STOCK: 주식 투자 입문에 진입 장벽을 느끼는 2030을 위한<br>  “초보자용 모의 투자 서비스”
 |18|[코드의정상화](#team-18)| Graphhopper와 Multi-Factor Route Optimization Algorithm을 이용한 러너 맞춤형 경로 추천 서비스
-|19|[JEY](#team-19)| Lightweight Part-Aware 3D Texture Editing Using 2D Stable Diffusion
+|19|[JEY](#team-19)| Lightweight Part-Aware 3D Texture Editing via 2D-base Methods
 |20|[뜨개걸즈](#team-20)| 도안을 구하기 어려운 뜨개인들을 위해 Image Segmentation(DeepLab)을 활용하여 제품 이미지에서 뜨개질 패턴 추출 및 도안을 생성하고 커뮤니티 기능을 제공하는 서비스
 |21|[가능한](#team-21)| VIDA: Vision-Informed Deep Audio Feature Generation for Action Recognition
 |22|[ZIP가기](#team-22)| 독립 출판물만의 감성을 즐기는 사용자를 위한 독립 출판물이 있는 서점 탐색부터, 리뷰 기반 추천까지, RAG를 기반으로 개인화된 독서 경험을 제공하는 서점ZIP
@@ -321,15 +321,15 @@
 [Return TOP](#list-of-teamsprojects)
  
 # Team-19
-| (1) 과제명 |  Lightweight Part-Aware 3D Texture Editing Using 2D Stable Diffusion |
+| (1) 과제명 |  Lightweight Part-Aware 3D Texture Editing via 2D-base Methods |
 |:---  |---  |
 | (2) 팀 번호/이름 | 19-JEY |
 | (3) 구성원 | 이다예 (1917026): 리더, 아이디어 및 프로젝트 계획 관리, 2D-to-3D adaptation, 2D semantic segmentation 연구 및 개발, part segmentation 검증 <br> 이상은 (2171036): 팀원, 회의/면담 기록 정리 및 관리, Text to texture 연구 및 개발, 2D-to-3D adaptation, 2D semantic segmentation 검증 <br> 정지우 (2171046) : 팀원, 프로젝트 마일스톤 관리 및 공유 파일 관리, part segmentation 연구 및 개발, Text to texture 검증 |
 | (4) 지도교수 | 김영준 교수 |
 | (5) 트랙  | 연구 |
 | (6) 과제 키워드 | Semantic Part Segmentation, Controllable Diffusion, Texture generation |
-| (7) 과제 내용 요약 | 본 연구는 고사양 3D 모델링 기술 없이도 특정 부위의 텍스처를 정밀하게 편집할 수 있는 2D 기반의 경량화된 텍스처링 프로세스를 제안한다. SyncDreamer를 활용하여 단일 이미지로부터 멀티뷰를 생성하고, VLPart와 SAM을 통해 2D 이미지에서 의미 기반 부위 분할을 수행한다. 이후 Text2LIVE를 활용해 텍스트 조건에 맞는 부위별 텍스처 편집을 적용한다. Aggregation 모듈을 통해 시점 간 마스크를 통합하고, refinement 단계에서 SyncDreamer 기반 정렬을 수행해 정합성을 높인다. 최종적으로 부위별 제어 정확도와 텍스처 품질을 동시에 확보하면서도 일반 사용자가 쉽게 접근할 수 있는 시스템을 구축하는 것을 목표로 한다. |
-| (8) 주요 Link |  |
+| (7) 과제 내용 요약 | **[연구 필요성]** <br>기존 3D 텍스처 편집 기술은 고사양 하드웨어에 대한 의존성과 복잡한 툴 사용, 부위별 세밀한 편집의 어려움 등으로 인해 일반 사용자에게 접근성이 낮았다. 특히, 별도의 전문 지식 없이 원하는 부위만을 직관적으로 편집하는 것은 기존 텍스처링 모델로는 불가능했다. 따라서 본 연구는 **_2D 기반의 경량 부위별 텍스처 편집 파이프라인_** 을 제안한다.<br><br>**[전략]** <br>본 연구는 **_부위 인식 단계_** 를 도입하여, 세밀한 텍스처링을 가능하게 한다. 전체 과정은 다음과 같이 구성된다 <br>1. 입력 이미지로부터 다중 뷰 이미지 생성<br>2. 다중 뷰 이미지에 대한 부위 분할 수행<br>3. 분할 정보를 기반으로 부위별 텍스트 프롬프트 편집 수행<br>4. 편집된 2D 텍스처를 3D로 확장하고, 다중 뷰 일관성을 보정<br>이러한 파이프라인은 **_2D 기반_** 부위 인식 및 텍스처 처리를 통해 경량화 효과를 달성하며, 복잡한 3D 연산 없이도 고품질 결과를 생성할 수 있도록 설계되었다.<br><br>**[결론 및 기대효과]** <br>본 연구는 기존 기존 3D 기반 모델에 비해 더 **_높은 텍스처 품질_** 과 **_세밀한 부위별 편집_** 을 실현했으며, **_짧은 처리 시간_** 으로 **_경량화_** 에도 성공하였다.<br>이를 통해 **_일반 사용자도 전문 지식 없이 직관적인 3D 부위 편집_** 이 가능해졌다. 향후 사용자 클릭 기반 부위 선택 기능과 결합하면 더욱 편리한 3D 텍스처링 도구로 확장될 수 있다.<br>궁극적으로 본 연구는 3D 콘텐츠 제작의 접근성과 생산성 향상에 기여하며, **_비전문가도 참여할 수 있는 3D 디자인 생태계_** 의 확장에 이바지할 수 있다. |
+| (8) 주요 Link | 보고서 https://github.com/jiu-jung/capstone-JEY/blob/main/2nd-report.md |
  
 <br>
  
